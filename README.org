@@ -1,0 +1,31 @@
+* MLdemo
+
+This repository contains Julia implementations of some machine-learning algorithms for study/demonstration purposes (i.e. emphasis is not on efficiency of implementation but on code simplicity/clarity).  Initially I am implementing the networks discussed in M. Nielsen's book [fn:1].
+
+* Contents
+- ~classifier_v1.jl~ :: A Julia module implementing the multiple-layer network classifier discussed in Chapter 1 of Nielsen's book.
+- ~driver_v1.jl~ :: Driver for the classifier above, training it with MNIST digit database (requires the ~MLDatasets~ package).
+
+* Copyright and license
+
+MLdemo files copyright (C) 2022 by Tomas S. Grigera.
+
+The files in the MLdemo reopsotry are is free software; you can
+redistribute and/or modify them under the terms of the GNU General
+Public License (GPL) as published by the Free Software Foundation,
+with the additional requirements of attribution and
+nonmisrepresentation. You can use either version 3, or (at your
+option) any later version.
+
+modified version of glsim, or code based on glsim, please cite us
+
+glsim is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE.
+
+For details see the file LICENSE in the home directory. 
+
+* Footnotes
+
+[fn:1] Michael A. Nielsen, /Neural Networks and Deep Learning/, Determination Press (2015), available [[http://neuralnetworksanddeeplearning.com/index.html][online]].
+ 
