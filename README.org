@@ -4,24 +4,15 @@ This repository contains Julia implementations of some machine-learning algorith
 
 * Contents
 - ~classifier_v1.jl~ :: A Julia module implementing the multiple-layer network classifier discussed in Chapter 1 of Nielsen's book.
-- ~driver_v1.jl~ :: Driver for the classifier above, training it with MNIST digit database (requires the ~MLDatasets~ package).
+- ~driver_v1.jl~ :: Driver for the classifier above, training it with MNIST digit database (requires the ~MLDatasets~ package).  After training, the script classifies a few of the test samples and displaying the original images.  Image displaying is done with the =ImageView= package, if you don't want to install it you must comment out the relevant lines.
 
 * Copyright and license
 
 MLdemo files copyright (C) 2022 by Tomas S. Grigera.
 
-The files in the MLdemo reopsotry are is free software; you can
-redistribute and/or modify them under the terms of the GNU General
-Public License (GPL) as published by the Free Software Foundation,
-with the additional requirements of attribution and
-nonmisrepresentation. You can use either version 3, or (at your
-option) any later version.
+The files in the MLdemo reopsotry are is free software; you can redistribute and/or modify them under the terms of the GNU General Public License (GPL) as published by the Free Software Foundation, with the additional requirements of attribution and nonmisrepresentation. You can use either version 3, or (at your option) any later version.
 
-modified version of glsim, or code based on glsim, please cite us
-
-glsim is distributed in the hope that it will be useful, but WITHOUT
-ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
-or FITNESS FOR A PARTICULAR PURPOSE.
+MLdemo is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 For details see the file LICENSE in the home directory. 
 
