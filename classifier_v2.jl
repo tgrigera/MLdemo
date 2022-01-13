@@ -35,7 +35,7 @@ import Random
 import Distributions
 
 export Classifier, feedforward, classify, train!
-export Quadratic_cost,CrossEntropy_cost
+export Quadratic_cost, CrossEntropy_cost
 
 #
 # Cost functions
@@ -67,7 +67,7 @@ and biases in arrays indexed by layer number.  The input layer is
 layer 1, this has no biases or weights, but is stored as a 0 because
 it makes numbering more convenient.
 
-It also stores pointer to
+It also stores a `Cost_function` object, to be used during training.
 """
 struct Classifier{costT<:Cost_function}
     nlayers::Int16
