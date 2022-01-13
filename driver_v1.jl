@@ -63,7 +63,7 @@ net=Classifiers.Classifier([input_size, 30, 10])
 η=3.0
 minib_size=10
 nepochs=30
-Classifiers.train(net,train_d,nepochs,minib_size,η,test_d)
+Classifiers.train!(net,train_d,nepochs,minib_size,η,test_d)
 
 # Now the network is trained, we try it on a few images.  This also
 # shows the original image using ImageView, if you prefer not to install

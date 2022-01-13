@@ -32,7 +32,7 @@ module Classifiers
 
 import Random
 
-export Classifier, feedforward, classify, train
+export Classifier, feedforward, classify, train!
 
 """
     struct Classifier
@@ -52,15 +52,15 @@ end
 """
     Classifier(layer_size::Vector{Int})
 
-Construct a multiple layer network with layers of the given sizes and activation
-function `σ`.  `σ_p` must be the derivative of `σ` or the learning methods will fail.
- Weights and biases are assigned randomly.
+Construct a multiple layer network with layers of the given sizes.
+Weights and biases are assigned randomly from a uniform distribution
+in [-1/2,1/2].
 
 # Example
     net=Classifier([40, 20, 10])
 
-Constructs a 3-layer network with 40 input neurons, 10 output neurons and a hidden layer
-of 20 neurons.
+Constructs a 3-layer network with 40 input neurons, 10 output neurons
+and a hidden layer of 20 neurons.
 """
 function Classifier(layer_size::Vector{Int})
     b=[ i==1 ? [0] : Random.rand(layer_size[i]).-.5 for i=1:length(layer_size) ]
@@ -106,7 +106,7 @@ classify(net::Classifier,x) = findmax(feedforward(net,x))[2]-1
 
 
 """
-    train(net::Classifier, training_data, epochs, mini_batch_size, η, test_data=nothing)
+    train!(net::Classifier, training_data, epochs, mini_batch_size, η, test_data=nothing)
 
 Train the classifier `net` using mini-batch stochastic
 gradient descent with a quadratic cost function.  `training_data` is a an array of tuples
@@ -118,12 +118,12 @@ If `test_data` is provided then the network will be evaluated against
 the test data after each epoch, and partial progress printed out.
 This is useful for tracking progress, but slows things down.
 """
-function train(net::Classifier, training_data, epochs, mini_batch_size, η, test_data=nothing)
+function train!(net::Classifier, training_data, epochs, mini_batch_size, η, test_data=nothing)
     tdata=copy(training_data)
     for j in 1:epochs
         Random.shuffle!(tdata)
         for k in 1:mini_batch_size:length(tdata)        
-            update_mini_batch(net, tdata[k:min(length(tdata),k+mini_batch_size-1)], η)
+            update_mini_batch!(net, tdata[k:min(length(tdata),k+mini_batch_size-1)], η)
         end
         if !isnothing(test_data)
             print("Epoch $j: $(evaluate(net,test_data)) / $(length(test_data))\n")
@@ -134,13 +134,13 @@ function train(net::Classifier, training_data, epochs, mini_batch_size, η, test
 end
 
 """
-    update_mini_batch(net::Classifier, mini_batch, η)
+    update_mini_batch!(net::Classifier, mini_batch, η)
 
 Update the network's weights and biases by applying gradient descent
 using backpropagation to a single mini batch.  `mini_batch` is the same
 format as `training_data` in function `train`, and `η` is the learning rate.
 """
-function  update_mini_batch(net::Classifier, mini_batch, η)
+function update_mini_batch!(net::Classifier, mini_batch, η)
     ∇_b = zero.(net.bias)
     ∇_w = zero.(net.weight)
     for (x, y) in mini_batch
@@ -193,7 +193,7 @@ end
 Return the vector of partial derivatives ∂C_x / ∂a of the quadritic cost function
 with respec to the output activations
 """
-msqerr_derivative(output_activations, y) = 0.5* (output_activations-y)
+msqerr_derivative(output_activations, y) = 2 * (output_activations-y)
 
 """
     evaluate(net::Classifier, test_data)
