@@ -2,9 +2,13 @@
 
 This repository contains Julia implementations of some machine-learning algorithms for study/demonstration purposes (i.e. emphasis is not on efficiency of implementation but on code simplicity/clarity).  Initially I am implementing the networks discussed in M. Nielsen's book [fn:1].
 
+
 * Contents
-- ~classifier_v1.jl~ :: A Julia module implementing the multiple-layer network classifier discussed in Chapter 1 of Nielsen's book.
-- ~driver_v1.jl~ :: Driver for the classifier above, training it with MNIST digit database (requires the ~MLDatasets~ package).  After training, the script classifies a few of the test samples and displaying the original images.  Image displaying is done with the =ImageView= package, if you don't want to install it you must comment out the relevant lines.
+
+- =classifier_v1.jl= :: A Julia module implementing the multiple-layer network classifier discussed in Chapter 1 of Nielsen's book.
+- =driver_v1.jl= :: Driver for the classifier above, training it with MNIST digit database (requires the ~MLDatasets~ package).  After training, the script classifies a few of the test samples and displaying the original images.  Image displaying is done with the =ImageView= package, if you don't want to install it you must comment out the relevant lines.
+- =classifier_v2= :: More flexible version of =classifier_v1=, including optional regularisation, improved weight initialisation and choice of cost function (quadratic or cross-entropy).
+
 
 * Copyright and license
 
@@ -15,6 +19,7 @@ The files in the MLdemo reopsotry are is free software; you can redistribute and
 MLdemo is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 For details see the file LICENSE in the home directory. 
+
 
 * Footnotes
 
