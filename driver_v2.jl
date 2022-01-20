@@ -54,8 +54,8 @@ input_size=length(train_d[1][1])
 #
 
 
-# # Create and train with quadratic cost, no regularisation
-# net1=Classifiers.Classifier([input_size, 30, 10], Classifiers.Quadratic_cost() );
+# Create and train with quadratic cost, no regularisation
+net1=Classifiers.Classifier([input_size, 30, 10], Classifiers.Quadratic_cost() );
 Classifiers.train!(net1,train_d,30,10,0.5,λ=0,
                    evaluation_data=valid_d,
                    monitor_evaluation_accuracy=true,
@@ -63,13 +63,13 @@ Classifiers.train!(net1,train_d,30,10,0.5,λ=0,
                    monitor_training_accuracy=true,
                    monitor_training_cost=true);
 
-# # Create and train with cross-entropy cost, no regularisation
+# Create and train with cross-entropy cost, no regularisation
 net2=Classifiers.Classifier([input_size, 30, 10], Classifiers.CrossEntropy_cost() );
 Classifiers.train!(net2,train_d,30,10,0.5,λ=0, evaluation_data=valid_d,monitor_evaluation_accuracy=true,
                    monitor_evaluation_cost=true, monitor_training_accuracy=true,
                    monitor_training_cost=true) ;
 
-# # Create and trains with quadratic cost and regularisation
+# Create and trains with quadratic cost and regularisation
 net3=Classifiers.Classifier([input_size, 30, 10], Classifiers.Quadratic_cost() );
 Classifiers.train!(net3,train_d,30,10,0.25,λ=0.005,
                    evaluation_data=valid_d,
@@ -79,7 +79,7 @@ Classifiers.train!(net3,train_d,30,10,0.25,λ=0.005,
                    monitor_training_cost=true);
 
 # Create and train with cross-entropy cost and regularisation
-net4=Classifiers.Classifier([input_size, 30, 10], Classifiers.CrossEntropy_cost() )
+net4=Classifiers.Classifier([input_size, 100, 10], Classifiers.CrossEntropy_cost() )
 Classifiers.train!(net4,train_d,30,10,0.1,λ=0.001,
                    evaluation_data=valid_d,
                    monitor_evaluation_accuracy=true,

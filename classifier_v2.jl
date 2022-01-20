@@ -85,10 +85,10 @@ Weights and biases are assigned from a Gaussian distribution with 0 mean and var
 and 1 respectively.
 
 # Example
-    net=Classifier([40, 20, 10])
+    net=Classifier([40, 20, 10],Classifiers.Quadratic_cost())
 
 Constructs a 3-layer network with 40 input neurons, 10 output neurons and a hidden layer
-of 20 neurons.
+of 20 neurons, and `Quadratic_cost` for cost function.
 """
 function Classifier(layer_size::Vector{Int},cost::costT) where {costT<:Cost_function}
     gauss = Distributions.Normal(0,1)

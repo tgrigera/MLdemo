@@ -7,7 +7,8 @@ This repository contains Julia implementations of some machine-learning algorith
 
 - =classifier_v1.jl= :: A Julia module implementing the multiple-layer network classifier discussed in Chapter 1 of Nielsen's book.
 - =driver_v1.jl= :: Driver for the classifier above, training it with MNIST digit database (requires the ~MLDatasets~ package).  After training, the script classifies a few of the test samples and displaying the original images.  Image displaying is done with the =ImageView= package, if you don't want to install it you must comment out the relevant lines.
-- =classifier_v2= :: More flexible version of =classifier_v1=, including optional regularisation, improved weight initialisation and choice of cost function (quadratic or cross-entropy).
+- =classifier_v2.jl= :: More flexible version of =classifier_v1=, including optional regularisation, improved weight initialisation and choice of cost function (quadratic or cross-entropy).
+- =driver_v2.jl= :: Driver to train =classifier_v2.jl= with MNIST digits
 
 
 * Copyright and license
