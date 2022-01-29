@@ -5,16 +5,20 @@ This repository contains Julia implementations of some machine-learning algorith
 
 * Contents
 
-"Bare" (i.e. using just basic Julia, except for loading the MNIST data) examples:
+** Plain Julia
+
+The network implementation is in plain Julia, with packages used only for importing MNIST and visualisation.
 
 - =classifier_v1.jl= :: A Julia module implementing the multiple-layer network classifier discussed in Chapter 1 of Nielsen's book.
 - =driver_v1.jl= :: Driver for the classifier above, training it with MNIST digit database (requires the ~MLDatasets~ package).  After training, the script classifies a few of the test samples and displaying the original images.  Image displaying is done with the =ImageView= package, if you don't want to install it you must comment out the relevant lines.
-- =classifier_v2.jl= :: More flexible version of =classifier_v1=, including optional regularisation, improved weight initialisation and choice of cost function (quadratic or cross-entropy).
+- =classifier_v2.jl= :: More flexible version of =classifier_v1=, including optional regularisation, improved weight initialisation and choice of cost function (quadratic or cross-entropy), following Chapter 3 of Nielsen's book.
 - =driver_v2.jl= :: Driver to train =classifier_v2.jl= with MNIST digits
 
-Using =Flux=.
+** Using the =Flux= package
 
-- =flux_gradient.jl= :: A brief test of =Flux='s gradient-taking capabilites
+- =flux_gradient.jl= :: A brief test of =Flux='s gradient-taking capabilites.
+- =flux_test.jl= ::  A test using =Flux= to fit a couple of one-dimensional datasets.
+- =flux_network_v2.jl= :: Like =driver_v2.jl= but implemented with =Flux=.  Not exactly identical, but close.
 
 
 * Copyright and license
