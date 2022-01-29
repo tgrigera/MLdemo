@@ -44,14 +44,15 @@ the case of training data.
 """
 function mnist_data()
     ntrain=50000
-    trainx,trainy = MLDatasets.MNIST.traindata()
+    tx,ty = MLDatasets.MNIST.traindata()
+    nvalid=size(tx,3)-ntrain
 
-    input_size=size(trainx,1)*size(trainx,2)
-    trainx = reshape(trainx[:,:,1:ntrain],input_size,ntrain)
-    trainy = hcat(vectorized.(trainy[1:ntrain])...)
+    input_size=size(tx,1)*size(tx,2)
+    trainx = reshape(tx[:,:,1:ntrain],input_size,ntrain)
+    trainy = hcat(vectorized.(ty[1:ntrain])...)
     train = (trainx,trainy)
 
-    valid = ( reshape(trainx[:,:,ntrain+1:end],input_size,:), trainy[ntrain+1:end] )
+    valid = ( reshape(tx[:,:,ntrain+1:end],input_size,:), ty[ntrain+1:end] )
 
     testx,testy = MLDatasets.MNIST.testdata()
     test = ( reshape(testx,input_size,:), testy ) 
